@@ -24,13 +24,15 @@ def submit(request):
     try:
         json_data = request.read()
         numRecords = numErrors = 0
+        errorMessage = ""
         for obj in serializers.deserialize("json",json_data):
             try:
                 obj.save()
                 numRecords = numRecords+1
-            except DeserializationError:
+            except Exception as e:
+                errorMessage = errorMessage+"\n\r"+str(e)+" "+str(type(e))
                 numErrors = numErrors + 1
-        return render(request,'mobile/submitSuccess.html',{'numRecords':numRecords,'numErrors':numErrors})
+        return render(request,'mobile/submitSuccess.html',{'numRecords':numRecords,'numErrors':numErrors,'errorMessage':errorMessage})
     except KeyError:
         return render(request,'mobile/missingData.html',{})
 

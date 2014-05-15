@@ -4,7 +4,7 @@ from django.db import models
 
 class Soul(models.Model):
     name = models.CharField(max_length=200)
-    email = models.EmailField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True, unique=True)
     street = models.TextField(null=True, blank=True)
     city = models.TextField(null=True, blank=True)
     state= models.TextField(null=True, blank=True)
