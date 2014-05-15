@@ -1,0 +1,36 @@
+<style media="screen" type="text/css">
+
+table
+{
+border-collapse:collapse;
+}
+table, th, td
+{
+border: 1px solid black;
+}
+
+</style>
+{% if latest_soul_list %}
+	<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Date</th>
+			<th>Distributor</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for soul in latest_soul_list %}
+    	<tr>
+    		<td><a href="{% url 'mobile:detail' soul.id%}">{{soul.name}}</a></td>
+    		<td>{{soul.email}}</td>
+    		<td>{{soul.date}}</td>
+    		<td>{{soul.distributor}}</td>
+    	</tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+    <p>No souls!</p>
+{% endif %}
