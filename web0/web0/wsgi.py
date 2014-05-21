@@ -8,10 +8,10 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 import socket
 import os
-if socket.gethostname() == 'dallas':
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web0.settings_production")
-else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web0.settings")
+# if socket.gethostname() == 'dallas':
+#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web0.settings_production")
+# else:
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web0.settings")
 
 
 from django.core.wsgi import get_wsgi_application
