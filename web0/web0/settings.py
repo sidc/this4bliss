@@ -39,8 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'autocomplete_light',
-    'content',
-    'users',
+    # 'content',
+    # 'users',
     'mobile'
 )
 
