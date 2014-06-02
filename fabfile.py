@@ -9,3 +9,10 @@ def deploy_static():
     with cd(env.project_root):
         run('source ../env/bin/activate')
         run('python manage.py collectstatic -v0 --noinput')
+
+
+def commit():
+    local("git add -p && git commit")
+
+def push():
+    local("git push")
