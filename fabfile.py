@@ -7,9 +7,14 @@ env.project_root = '/home/sidc/this4bliss/web0'
 
 def deploy_static():
     with cd(env.project_root):
+    	run("git pull")
         run('source ../env/bin/activate')
         run('python manage.py collectstatic -v0 --noinput')
+        run("touch web0.wsgi")
 
+def prepare_deploy():
+    commit()
+    push()
 
 def commit():
     local("git add -p && git commit")
