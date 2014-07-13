@@ -16,6 +16,7 @@ def source_virtualenv():
     with prefix('source ' + os.path.join(VENV_DIR, 'bin/activate')):
         yield
 
+## fab deploy_static -R pro
 def deploy_static():
     with cd(env.project_root):
         with source_virtualenv():
