@@ -1,3 +1,10 @@
+{% extends "mobile/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<H1>This4Bliss Contacts Server</H1>
+
+
 <style media="screen" type="text/css">
 
 table
@@ -11,11 +18,14 @@ border: 1px solid black;
 
 </style>
 {% if latest_soul_list %}
-	<table>
+	<table id="example" class="display" cellspacing="0" width="100%">
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>Email</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Event</th>
 			<th>Date</th>
 			<th>Distributor</th>
 		</tr>
@@ -25,6 +35,9 @@ border: 1px solid black;
     	<tr>
     		<td><a href="{% url 'mobile:detail' soul.id%}">{{soul.name}}</a></td>
     		<td>{{soul.email}}</td>
+            <td>{{soul.city}}</td>
+            <td>{{soul.state}}</td>
+            <td>{{soul.event}}</td>
     		<td>{{soul.date}}</td>
     		<td>{{soul.distributor}}</td>
     	</tr>
@@ -34,3 +47,40 @@ border: 1px solid black;
 {% else %}
     <p>No souls!</p>
 {% endif %}
+
+<script type="text/javascript">
+   $(document).ready(function() {
+        $('#example').DataTable( {
+            dom: 'T<"clear">lfrtip',
+            
+            tableTools: {
+                "sRowSelect": "multi",
+                "aButtons": [ "select_all", "select_none" ],
+                "aButtons": [ "copy", "csv" ],
+                "aButtons": [
+                    {
+                    "sExtends": "copy",
+                    "sButtonText": "Copy to clipboard",
+                    "bSelectedOnly": true,
+                    "oSelectorOpts": {
+                        filter: "applied"
+                        },
+                    },
+                    {
+                    "sExtends": "csv",
+                    "sButtonText": "Download CSV",
+                    "bSelectedOnly": true,
+                    "oSelectorOpts": {
+                        filter: "applied"
+                        },
+                    },
+    
+                ],
+                "sSwfPath": "{% static 'DataTables/extensions/TableTools/swf/copy_csv_xls.swf' %}"
+            }
+        } );
+    } );
+</script>
+
+<H5>contact sidharth.chhabra@gmail.com for any issues</H5>
+{% endblock %}

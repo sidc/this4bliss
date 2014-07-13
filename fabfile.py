@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from fabric.api import *
 import os
 from contextlib import contextmanager

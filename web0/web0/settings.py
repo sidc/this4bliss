@@ -93,6 +93,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Additional locations of static files
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "common_assets"),
+)
 
 # Template Context Processors to help django-suit http://django-suit.readthedocs.org/en/develop/
 

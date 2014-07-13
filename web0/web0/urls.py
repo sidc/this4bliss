@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import autocomplete_light
 
 autocomplete_light.autodiscover()
@@ -14,3 +15,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^autocomplete/', include('autocomplete_light.urls')),
 )
+
+urlpatterns += staticfiles_urlpatterns()
