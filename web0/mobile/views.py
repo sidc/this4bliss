@@ -10,7 +10,7 @@ from django.core import serializers
 
 
 def index(request):
-    latest_soul_list = Soul.objects.order_by("-date")[:10]
+    latest_soul_list = Soul.objects.all()
     context = {'latest_soul_list':latest_soul_list}
     return render(request,'mobile/index.html',context)
 
